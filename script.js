@@ -22,26 +22,27 @@ var debrief_block = {
 
 // variable data, defined above which is a homogenous collection of objects
 
-// get keys
-//var keys = _.keys(data[0]);
+get keys
+alert(window.data);
+var keys = _.keys(data[0]);
 
-// convert to csv string
-//var csv = keys.join(",");
-//_(data).each(function(row) {
- // csv += "\n";
- // csv += _(keys).map(function(k) {
- //   return row[k];
- // }).join(",");
-//});
+convert to csv string
+var csv = keys.join(",");
+_(data).each(function(row) {
+ csv += "\n";
+ csv += _(keys).map(function(k) {
+   return row[k];
+  }).join(",");
+});
 
 // trick browser into downloading file
-//var uriContent = "data:application/octet-stream," + encodeURIComponent(csv);
-//var myWindow = window.open(uriContent, "Nutrient CSV");
-//myWindow.focus();
+var uriContent = "data:application/octet-stream," + encodeURIComponent(csv);
+var myWindow = window.open(uriContent, "Data CSV");
+myWindow.focus();
 
-//postFile('http://example.com/api/v1/users', uriContent)
-  //.then(data => console.log(data))
-  //.catch(error => console.error(error))
+postFile('http://example.com/api/v1/users', uriContent)
+  .then(data => console.log(data))
+  .catch(error => console.error(error))
 //<script src="https://gist.github.com/justsml/529d0b1ddc5249095ff4b890aad5e801.js"></script>
 
 
