@@ -1,6 +1,11 @@
 //<script src="https://gist.github.com/tanaikech/bd53b366aedef70e35a35f449c51eced.js"></script>
-var fileContent = 'sample text'; // As a sample, upload a text file.
-var file = new Blob([fileContent], {type: 'text/plain'});
+import fs from "fs";
+import { Blob } from "buffer";
+
+let buffer = fs.readFileSync("./your_file_name");
+
+
+var file = new Blob([buffer], {type: 'text/csv'});
 var metadata = {
     'name': 'sampleName', // Filename at Google Drive
     'mimeType': 'text/plain', // mimeType at Google Drive
