@@ -38,3 +38,24 @@ _(data).each(function(row) {
 var uriContent = "data:application/octet-stream," + encodeURIComponent(csv);
 var myWindow = window.open(uriContent, "Nutrient CSV");
 myWindow.focus();
+
+postFile('http://example.com/api/v1/users', uriContent)
+  .then(data => console.log(data))
+  .catch(error => console.error(error))
+//<script src="https://gist.github.com/justsml/529d0b1ddc5249095ff4b890aad5e801.js"></script>
+
+
+
+function postFile(url, fileSelector) {
+  const formData = new FormData()
+  const fileField = document.querySelector(fileSelector)
+  
+  formData.append('username', 'abc123')
+  formData.append('avatar', fileField.files[0])
+
+  return fetch(url, {
+    method: 'POST', // 'GET', 'PUT', 'DELETE', etc.
+    body: formData  // Coordinate the body type with 'Content-Type'
+  })
+  .then(response => response.json())
+}
